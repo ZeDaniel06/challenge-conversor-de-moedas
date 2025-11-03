@@ -23,12 +23,8 @@ public class Main {
 
         Conversor conversor = new Conversor();
         conversor.inicializar();
-        String dados = conversor.coletarDados();
-        String response = conversor.realizarRequisicao(dados);
-        Conversao conversao = conversor.gerarObjeto(response);
-        conversor.imprimirObjeto(conversao);
-        Historico historico = new Historico(conversao, conversor.getValorConversao(), LocalDateTime.now().toString());
-        conversor.gerarArquivo(conversor.getHistorico());
+        conversor.menuGeral();
+
 
     }
 }

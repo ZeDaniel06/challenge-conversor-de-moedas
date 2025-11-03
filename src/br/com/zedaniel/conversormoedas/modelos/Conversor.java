@@ -5,10 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -32,6 +29,7 @@ public class Conversor {
     private Scanner scanner;
     private String uriFinal;
     private ArrayList<Historico> historico = new ArrayList<Historico>();
+    private Gson gson;
 
     public Conversor(){
         uriInicial = "https://v6.exchangerate-api.com/v6/";
@@ -48,6 +46,66 @@ public class Conversor {
         listaMoedas.add("CLP");
         listaMoedas.add("COP");
         listaMoedas.add("USD");
+        gson = new GsonBuilder().setPrettyPrinting()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .create();
+    }
+
+    public void menuGeral() throws IOException {
+        int menu = 10;
+        while (menu != 4){
+            try{
+                System.out.println("1 - Ver Histórico\n2 - Limpar Histórico\n3 - Fazer cotação\n" +
+                        "4 - Sair");
+
+                System.out.println("O que deseja fazer? Digite o número correspondente: ");
+                menu = scanner.nextInt();
+                if(menu == 1){
+                    if(historico.size() == 0){
+                        System.out.println("O Histórico está vazio...");
+                        System.out.println("Pressione enter para continuar");
+                        String bla = scanner.nextLine();
+                    }else{
+                        for(Historico elemento: historico){
+                            System.out.println(elemento);
+                        }
+                        System.out.println("Pressione enter para continuar...");
+                        scanner.nextLine();
+                        String ble = scanner.nextLine();
+                    }
+                }else if(menu == 2){
+                    limparHistorico();
+                }else if(menu == 3){
+                    String dados = coletarDados();
+                    String response = realizarRequisicao(dados);
+                    Conversao conversao = gerarObjeto(response);
+                    imprimirObjeto(conversao);
+                    Historico historico = new Historico(conversao, getValorConversao(), LocalDateTime.now().toString());
+                    gerarArquivo(getHistorico());
+                }else if(menu == 4){
+                    System.out.println("Encerrando...");
+                }else{
+                    System.out.println("Opção inválida!");
+                    menu = 10;
+                }
+            }catch(InputMismatchException e){
+                System.out.println("Você deve digitar um número!");
+                menu = 10;
+            }
+        }
+
+    }
+
+    public void limparHistorico() {
+        historico = new ArrayList<>();
+
+        File file = new File("historico.json");
+        boolean haveDeleted = file.delete();
+        if(haveDeleted){
+            System.out.println("Histórico apagado com sucesso!");
+        }else {
+            System.out.println("Não há um histórico a ser apagado!");
+        }
     }
     public String coletarDados(){
         this.moedaBase = menuMoeda("moeda base");
@@ -58,7 +116,7 @@ public class Conversor {
         return uriFinal;
     }
 
-    public void inicializar() throws FileNotFoundException {
+    public void inicializar() throws IOException {
         try{
             Gson gson = new GsonBuilder().setPrettyPrinting()
                     .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -68,32 +126,11 @@ public class Conversor {
             Type tipo = new TypeToken<ArrayList<Historico>>(){}.getType();
 
             historico = gson.fromJson(fileReader, tipo);
-
-            System.out.println("Você deseja imprimir o histórico?\n1 - Sim\n2 - Não:");
-            int menu = 0;
-            while(menu != 1 && menu != 2){
-                try{
-
-                    menu = scanner.nextInt();
-                    scanner.nextLine();
-                }catch (InputMismatchException e){
-                    System.out.println("Você deve digitar 1 para exibir o histórico ou 2 para não exibir: ");
-                }
-
-            }
-
-            if(menu == 1){
-                for(int i = 0; i < historico.size(); i++){
-                    System.out.println(historico.get(i).toString());
-
-                }
-                System.out.println("Pressione enter para continuar");
-                String variavel = scanner.nextLine();
-            }
+            fileReader.close();
 
 
         } catch (FileNotFoundException e) {
-            System.out.println("O histórico está vazio.");
+            System.out.println("---");
         }
 
     }
