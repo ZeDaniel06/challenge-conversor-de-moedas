@@ -1,0 +1,11 @@
+[
+  {
+    "result": "success",
+    "base_code": "USD",
+    "target_code": "BRL",
+    "conversion_rate": "5.3825",
+    "conversion_result": "2034.585",
+    "data": "2025-11-03T14:45:19.151289100",
+    "valor_conversao": 378.0
+  }
+]
