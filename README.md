@@ -3,7 +3,7 @@
 <img src="./imgs/LogoAPI.png" alt="Logo da Exchange-API">
 </p>
 <p align="center">
-Este projeto utiliza a Exchange-API para realizar conversão entre uma variedade de moedas diferentes, sendo elas:
+Este projeto Java utiliza a ExchangeRate-API para realizar conversão entre uma variedade de moedas diferentes, sendo elas:
 </p>
 <p align="center">
 1 - ARS - Peso argentino
@@ -38,6 +38,14 @@ Após isso, você receberá sua informação, e o registro no histórico, para c
 Exemplo de resultado no histórico:
 </p>
 <img align="center" src="./imgs/Historico.png" alt="Histórico">
+<p align="center">
+Entre as tecnologias usadas para o desenvolvimento, estão: <br>Gson, uma biblioteca da Google para conversão de arquivos .json;<br>
+Bibliotecas File, FileWriter e FileReader, para manipulação de arquivos;<br>
+Classe Scanner, para leitura de dados através do teclado;<br>
+Coleções ArrayList, para armazenar os resultados;<br>
+Bibliotecas HttpRequest, HttpResponse, HttpClient para o envio das requisições;<br>
+API ExchangeRate-API, para obter os dados necessários às conversões;<br>
+</p>
 
 <h1>Autor</h1>
 <img loading="lazy" src="https://avatars.githubusercontent.com/u/53923828?v=4" width=115><br><sub>José Daniel Silva de Araújo</sub>(https://github.com/ZeDaniel06)
