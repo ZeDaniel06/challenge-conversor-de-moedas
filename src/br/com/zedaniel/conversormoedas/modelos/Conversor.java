@@ -60,6 +60,7 @@ public class Conversor {
 
                 System.out.println("O que deseja fazer? Digite o número correspondente: ");
                 menu = scanner.nextInt();
+                scanner.nextLine();
                 if(menu == 1){
                     if(historico.size() == 0){
                         System.out.println("O Histórico está vazio...");
@@ -91,6 +92,7 @@ public class Conversor {
             }catch(InputMismatchException e){
                 System.out.println("Você deve digitar um número!");
                 menu = 10;
+                scanner.nextLine();
             }
         }
 
@@ -148,6 +150,7 @@ public class Conversor {
                 }
             }catch (InputMismatchException e){
                 System.out.println("Você deve digitar apenas números!");
+
             }finally {
                 scanner.nextLine();
             }

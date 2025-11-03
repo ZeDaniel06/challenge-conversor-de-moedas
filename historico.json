@@ -1,11 +1,11 @@
 [
   {
     "result": "success",
-    "base_code": "USD",
+    "base_code": "ARS",
     "target_code": "BRL",
-    "conversion_rate": "5.3825",
-    "conversion_result": "2034.585",
-    "data": "2025-11-03T14:45:19.151289100",
-    "valor_conversao": 378.0
+    "conversion_rate": "0.003730",
+    "conversion_result": "3.73",
+    "data": "2025-11-03T20:58:35.219392",
+    "valor_conversao": 1000.0
   }
 ]
