@@ -3,9 +3,9 @@
     "result": "success",
     "base_code": "ARS",
     "target_code": "BRL",
-    "conversion_rate": "0.003730",
-    "conversion_result": "3.73",
-    "data": "2025-11-03T20:58:35.219392",
-    "valor_conversao": 1000.0
+    "conversion_rate": "0.003677",
+    "conversion_result": "0.18385",
+    "data": "2025-11-03T21:31:13.158318900",
+    "valor_conversao": 50.0
   }
 ]

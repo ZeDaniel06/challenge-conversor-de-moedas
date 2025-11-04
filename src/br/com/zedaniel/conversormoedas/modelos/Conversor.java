@@ -141,19 +141,23 @@ public class Conversor {
         int menu = -1;
         while (menu < 0){
             try{
+
                 System.out.println("Qual valor deseja converter? ");
-                double valorConversao = scanner.nextDouble();
+                String preencheValor = scanner.nextLine();
+                preencheValor = preencheValor.replace(",",".");
+
+                double valorConversao = Double.parseDouble(preencheValor);
                 if(valorConversao > 0){
                     return valorConversao;
                 }else {
                     System.out.println("Você deve digitar um número positivo!");
                 }
-            }catch (InputMismatchException e){
+            }catch (InputMismatchException | NumberFormatException e){
                 System.out.println("Você deve digitar apenas números!");
 
-            }finally {
-                scanner.nextLine();
             }
+
+
         }
         return 1;
     }
@@ -206,11 +210,13 @@ public class Conversor {
     }
 
     public void imprimirObjeto(Conversao conversao){
-        System.out.println("Moeda base: " + conversao.baseCode() +
+        System.out.println("\n-------------------------------\n" + "Moeda base: " + conversao.baseCode() +
                 "\nMoeda destino: " + conversao.targetCode() +
                 "\nTaxa de câmbio: " + conversao.conversionRate() +
                 "\nValor base: " + valorConversao +
-                "\nValor convertido: " + conversao.conversionResult());
+                "\nValor convertido: " + conversao.conversionResult() +
+         "\n----------------------------------------------\n");
+
 
     }
 
