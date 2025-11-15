@@ -33,7 +33,8 @@ public class Conversor {
 
     public Conversor(){
         uriInicial = "https://v6.exchangerate-api.com/v6/";
-        chaveApi = "ca0cad4e9f37e46cb38616bc";
+        chaveApi = System.getenv("APIKEY");
+        
         tipoConversao = "/pair/";
         moedaBase = "";
         moedaFinal = "";

@@ -2,10 +2,29 @@
   {
     "result": "success",
     "base_code": "ARS",
-    "target_code": "BRL",
-    "conversion_rate": "0.003677",
-    "conversion_result": "0.18385",
-    "data": "2025-11-03T21:31:13.158318900",
-    "valor_conversao": 50.0
+    "target_code": "BOB",
+    "conversion_rate": "0.004935",
+    "conversion_result": "0.004935",
+    "data": "2025-11-13T14:17:01.131516200",
+    "valor_conversao": 1.0
+  },
+  {
+    "result": "error",
+    "data": "2025-11-13T15:09:56.982066400",
+    "valor_conversao": 100.0
+  },
+  {
+    "result": "error",
+    "data": "2025-11-13T15:10:33.842396800",
+    "valor_conversao": 10.0
+  },
+  {
+    "result": "success",
+    "base_code": "ARS",
+    "target_code": "BOB",
+    "conversion_rate": "0.004935",
+    "conversion_result": "0.00987",
+    "data": "2025-11-13T15:16:32.041979400",
+    "valor_conversao": 2.0
   }
 ]
